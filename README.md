@@ -39,7 +39,46 @@ python main_offline.py --mode demo
 python main_offline.py --mode serve --port 5000
 ```
 
-### Option 3: Docker Deployment
+### Option 3: Simplified Version
+
+```bash
+# Install dependencies
+pip install -r requirements_simple.txt
+
+# Run demo
+python main_simple.py --mode demo
+
+# Interactive testing
+python main_simple.py --mode test --src_lang en --tgt_lang hi
+```
+
+### Option 4: Ultra-Simple Version (MarianMT)
+
+```bash
+# Install dependencies
+pip install -r requirements_ultra_simple.txt
+
+# Run demo
+python main_ultra_simple.py --mode demo
+
+# Start API server
+python main_ultra_simple.py --mode serve --port 5000
+```
+
+### Option 5: Full Version (M2M-100)
+
+```bash
+# Install dependencies
+pip install -r requirements_minimal.txt
+
+# Run demo
+python main.py --mode demo
+
+# Training and fine-tuning
+python main.py --mode compare --src_lang en --tgt_lang hi
+```
+
+### Option 6: Docker Deployment
 
 ```bash
 # Windows
@@ -73,6 +112,11 @@ python simple_test.py
 pip install -r requirements_offline.txt
 ```
 
+**Simplified Version:**
+```bash
+pip install -r requirements_simple.txt
+```
+
 **Ultra-Simple Version (MarianMT):**
 ```bash
 pip install -r requirements_ultra_simple.txt
@@ -81,6 +125,11 @@ pip install -r requirements_ultra_simple.txt
 **Full Version (M2M-100):**
 ```bash
 pip install -r requirements_minimal.txt
+```
+
+**Complete Version (All Dependencies):**
+```bash
+pip install -r requirements.txt
 ```
 
 ## Usage
@@ -112,7 +161,36 @@ python main_offline.py --mode test --src_lang en --tgt_lang hi
 python main_offline.py --mode serve --port 5000
 ```
 
-### 3. Training and Fine-tuning (Full Version)
+### 3. Simplified Version Usage
+
+**Demo Mode:**
+```bash
+python main_simple.py --mode demo
+```
+
+**Interactive Testing:**
+```bash
+python main_simple.py --mode test --src_lang en --tgt_lang hi
+```
+
+### 4. Ultra-Simple Version Usage
+
+**Demo Mode:**
+```bash
+python main_ultra_simple.py --mode demo
+```
+
+**Interactive Testing:**
+```bash
+python main_ultra_simple.py --mode test --src_lang en --tgt_lang hi
+```
+
+**Start API Server:**
+```bash
+python main_ultra_simple.py --mode serve --port 5000
+```
+
+### 5. Training and Fine-tuning (Full Version)
 
 **Basic training:**
 ```bash
@@ -301,18 +379,31 @@ Translation Model Fine-tuning and Deployment/
 ├── simple_test.py               # ✅ Offline version (no dependencies)
 ├── main_offline.py              # ✅ Flask API offline version
 ├── main_ultra_simple.py         # ✅ MarianMT version
+├── main_simple.py               # ✅ Simplified version
 ├── main.py                      # ✅ Full M2M-100 version
+├── test_installation.py         # ✅ Installation test script
 ├── requirements_offline.txt     # ✅ Flask only
 ├── requirements_ultra_simple.txt # ✅ MarianMT dependencies
 ├── requirements_minimal.txt     # ✅ M2M-100 dependencies
-├── Dockerfile.offline           # ✅ Docker configuration
-├── docker-compose.offline.yml   # ✅ Docker Compose config
+├── requirements_simple.txt      # ✅ Simple dependencies
+├── requirements.txt             # ✅ Full dependencies
+├── Dockerfile                   # ✅ Main Dockerfile
+├── Dockerfile.offline           # ✅ Offline Dockerfile
+├── docker-compose.yml           # ✅ Main compose file
+├── docker-compose.offline.yml   # ✅ Offline compose file
 ├── deploy.sh                    # ✅ Linux/Mac deployment script
 ├── deploy.bat                   # ✅ Windows deployment script
 ├── .dockerignore                # ✅ Docker ignore file
+├── .gitignore                   # ✅ Git ignore file
 ├── README.md                    # ✅ This documentation
 └── data/                        # ✅ Dataset directory
     └── opensubs/
+        ├── sample_en-hi.csv     # ✅ Sample cultural idiom data
+        ├── en-hi_train.csv      # ✅ English-Hindi dataset
+        ├── fr-hy_train.csv      # ✅ French-Armenian dataset
+        ├── bs-eo_train.csv      # ✅ Bosnian-Esperanto dataset
+        ├── bn-is_train.csv      # ✅ Bengali-Indonesian dataset
+        └── da-ru_train.csv      # ✅ Danish-Russian dataset (large)
 ```
 
 ## Technical Implementation
@@ -328,6 +419,7 @@ Translation Model Fine-tuning and Deployment/
 7. **OpenSubtitlesCulturalTranslator**: Inference and translation
 8. **OpenSubtitlesEvaluator**: Evaluation metrics and comparison
 9. **Flask API**: REST API endpoints
+10. **Test Installation Script**: Dependency verification
 
 ### Fine-tuning Process (Full Version)
 

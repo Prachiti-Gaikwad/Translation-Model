@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: cultural-translation-api
+    env: python
+    buildCommand: pip install -r requirements_offline.txt
+    startCommand: python main_offline.py --mode serve --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.16
+      - key: FLASK_ENV
+        value: production 
